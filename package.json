@@ -1,6 +1,6 @@
 {
   "name": "powersnap",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Take reliable screenshots from websites",
   "repository": {
     "type": "git",

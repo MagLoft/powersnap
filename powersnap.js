@@ -28,8 +28,8 @@ program
   .version("1.0.0")
   .usage('[options] <url ...>')
   .arguments('[urls...]')
-  .option('-w, --width <width>', 'device width', parseInt, 600)
-  .option('-h, --height <height>', 'device height', parseInt, 900)
+  .option('-w, --width <width>', 'device width', 600)
+  .option('-h, --height <height>', 'device height', 900)
   .option('-d, --dir <dir>', 'target directory', validateDir, ".")
   .option('-f, --file <file>', 'output file pattern', "screenshot-{md5}-{width}x{height}.png")
   .option('-s, --silent', 'silent mode (no output)', false)
@@ -66,8 +66,8 @@ program
       log(`▸ Generating screenshot for '${url}' to '${program.dir}/${filenames[index]}'`)
     	return screenshot({
     		url: url,
-    		width: program.width,
-    		height: program.height
+    		width: parseInt(program.width),
+    		height: parseInt(program.height)
     	})
     })).then(function (images) {
     	images.forEach(function (image, index) {
