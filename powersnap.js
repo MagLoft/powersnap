@@ -28,8 +28,9 @@ program
   .version("1.0.0")
   .usage('[options] <url ...>')
   .arguments('[urls...]')
-  .option('-w, --width <width>', 'device width', 600)
-  .option('-h, --height <height>', 'device height', 900)
+  .option('-w, --width <width>', 'device width', "600")
+  .option('-h, --height <height>', 'device height', "900")
+  .option('-z, --zoom <zoom>', 'zoom factor', "1.0")
   .option('-d, --dir <dir>', 'target directory', validateDir, ".")
   .option('-f, --file <file>', 'output file pattern', "screenshot-{md5}-{width}x{height}.png")
   .option('-s, --silent', 'silent mode (no output)', false)
@@ -67,7 +68,8 @@ program
     	return screenshot({
     		url: url,
     		width: parseInt(program.width),
-    		height: parseInt(program.height)
+    		height: parseInt(program.height),
+        zoomFactor: parseFloat(program.zoomFactor)
     	})
     })).then(function (images) {
     	images.forEach(function (image, index) {
