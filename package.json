@@ -1,0 +1,24 @@
+{
+  "name": "powersnap",
+  "version": "1.0.0",
+  "description": "Take reliable screenshots from websites",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/magloft/powersnap.git"
+  },
+  "main": "powersnap.js",
+  "bin": {
+    "powersnap": "./powersnap.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tobias Strebitzer",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.3.5",
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0",
+    "electron-screenshot-service": "^2.3.1"
+  }
+}
