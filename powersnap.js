@@ -25,7 +25,7 @@ function log(message, color) {
 }
 
 program
-  .version("1.0.0")
+  .version("1.0.3")
   .usage('[options] <url ...>')
   .arguments('[urls...]')
   .option('-w, --width <width>', 'device width', "600")
@@ -69,7 +69,8 @@ program
     		url: url,
     		width: parseInt(program.width),
     		height: parseInt(program.height),
-        zoomFactor: parseFloat(program.zoomFactor)
+        zoomFactor: parseFloat(program.zoom),
+        css: 'body{ background:transparent !important;}::-webkit-scrollbar{opacity:0 !important;display: none !important;}'
     	})
     })).then(function (images) {
     	images.forEach(function (image, index) {
