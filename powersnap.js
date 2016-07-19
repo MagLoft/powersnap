@@ -30,6 +30,7 @@ program
   .arguments('[urls...]')
   .option('-w, --width <width>', 'device width', "600")
   .option('-h, --height <height>', 'device height', "900")
+  .option('-p, --page', 'capture full page', false)
   .option('-z, --zoom <zoom>', 'zoom factor', "1.0")
   .option('-d, --dir <dir>', 'target directory', validateDir, ".")
   .option('-f, --file <file>', 'output file pattern', "screenshot-{md5}-{width}x{height}.png")
@@ -69,8 +70,9 @@ program
     		url: url,
     		width: parseInt(program.width),
     		height: parseInt(program.height),
-        zoomFactor: parseFloat(program.zoom),
-        css: 'body{ background:transparent !important;}::-webkit-scrollbar{opacity:0 !important;display: none !important;}'
+            page: program.page,
+            zoomFactor: parseFloat(program.zoom),
+            css: 'body{ background:transparent !important;}::-webkit-scrollbar{opacity:0 !important;display: none !important;}'
     	})
     })).then(function (images) {
     	images.forEach(function (image, index) {
