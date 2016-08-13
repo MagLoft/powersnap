@@ -33,6 +33,7 @@ program
   .option('-p, --page', 'capture full page', false)
   .option('-z, --zoom <zoom>', 'zoom factor', "1.0")
   .option('-t, --format <format>', 'format', "jpeg")
+  .option('-q, --quality <format>', 'quality', "90")
   .option('-d, --dir <dir>', 'target directory', validateDir, ".")
   .option('-f, --file <file>', 'output file pattern', "screenshot-{md5}-{width}x{height}.png")
   .option('-s, --silent', 'silent mode (no output)', false)
@@ -70,6 +71,7 @@ program
       return screenshot({
         url: url,
         format: program.format,
+        quality: parseInt(program.quality),
         width: parseInt(program.width),
         height: parseInt(program.height),
         page: program.page,
