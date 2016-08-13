@@ -66,18 +66,18 @@ program
     screenshot.scale(urls.length)
     Promise.all(urls.map(function(url, index) {
       log(`▸ Generating screenshot for '${url}' to '${program.dir}/${filenames[index]}'`)
-    	return screenshot({
-    		url: url,
-    		width: parseInt(program.width),
-    		height: parseInt(program.height),
-            page: program.page,
-            zoomFactor: parseFloat(program.zoom),
-            css: 'body{ background:transparent !important;}::-webkit-scrollbar{opacity:0 !important;display: none !important;}'
-    	})
+      return screenshot({
+        url: url,
+        width: parseInt(program.width),
+        height: parseInt(program.height),
+        page: program.page,
+        zoom: parseFloat(program.zoom),
+        css: 'body{ background:transparent !important;}::-webkit-scrollbar{opacity:0 !important;display: none !important;}'
+      })
     })).then(function (images) {
-    	images.forEach(function (image, index) {
-    		fs.writeFileSync(`${program.dir}/${filenames[index]}`, image.data)
-    	})
+      images.forEach(function (image, index) {
+        fs.writeFileSync(`${program.dir}/${filenames[index]}`, image.data)
+      })
       log("▸ All screenshots complete", chalk.bold.green)
       
       if(program.json) {
