@@ -32,7 +32,7 @@ program
   .option('-h, --height <height>', 'device height', "900")
   .option('-p, --page', 'capture full page', false)
   .option('-z, --zoom <zoom>', 'zoom factor', "1.0")
-  .option('-f, --format <format>', 'format', "jpeg")
+  .option('-t, --format <format>', 'format', "jpeg")
   .option('-d, --dir <dir>', 'target directory', validateDir, ".")
   .option('-f, --file <file>', 'output file pattern', "screenshot-{md5}-{width}x{height}.png")
   .option('-s, --silent', 'silent mode (no output)', false)
@@ -74,7 +74,7 @@ program
         height: parseInt(program.height),
         page: program.page,
         zoom: parseFloat(program.zoom),
-        css: 'body{ background:transparent !important;}::-webkit-scrollbar{opacity:0 !important;display: none !important;}'
+        css: 'body{ background:#FFFFFF !important;}::-webkit-scrollbar{opacity:0 !important;display: none !important;}'
       })
     })).then(function (images) {
       images.forEach(function (image, index) {
