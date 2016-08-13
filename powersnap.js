@@ -32,6 +32,7 @@ program
   .option('-h, --height <height>', 'device height', "900")
   .option('-p, --page', 'capture full page', false)
   .option('-z, --zoom <zoom>', 'zoom factor', "1.0")
+  .option('-f, --format <format>', 'format', "jpeg")
   .option('-d, --dir <dir>', 'target directory', validateDir, ".")
   .option('-f, --file <file>', 'output file pattern', "screenshot-{md5}-{width}x{height}.png")
   .option('-s, --silent', 'silent mode (no output)', false)
@@ -68,6 +69,7 @@ program
       log(`▸ Generating screenshot for '${url}' to '${program.dir}/${filenames[index]}'`)
       return screenshot({
         url: url,
+        format: program.format,
         width: parseInt(program.width),
         height: parseInt(program.height),
         page: program.page,
