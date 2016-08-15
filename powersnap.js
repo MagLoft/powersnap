@@ -32,6 +32,7 @@ program
   .option('-h, --height <height>', 'device height', "900")
   .option('-p, --page', 'capture full page', false)
   .option('-z, --zoom <zoom>', 'zoom factor', "1.0")
+  .option('-c, --css <css>', 'css file', null)
   .option('-t, --format <format>', 'format', "jpeg")
   .option('-q, --quality <format>', 'quality', "90")
   .option('-d, --dir <dir>', 'target directory', validateDir, ".")
@@ -65,6 +66,12 @@ program
     // Run Screenshot Genearator
     log(`Generating ${urls.length} screenshot${urls.length == 1 ? '' : 's'} to '${program.file}' (${program.width}x${program.height})`, chalk.bold.blue)
     
+    // Inject CSS
+    let css = 'body{ background:#FFFFFF !important;}::-webkit-scrollbar{opacity:0 !important;display: none !important;}'
+    if(program.css != null) {
+      css = css + fs.readFileSync(program.css, {encoding: "utf-8"})
+    }
+    
     screenshot.scale(urls.length)
     Promise.all(urls.map(function(url, index) {
       log(`▸ Generating screenshot for '${url}' to '${program.dir}/${filenames[index]}'`)
@@ -76,7 +83,7 @@ program
         height: parseInt(program.height),
         page: program.page,
         zoom: parseFloat(program.zoom),
-        css: 'body{ background:#FFFFFF !important;}::-webkit-scrollbar{opacity:0 !important;display: none !important;}'
+        css: css
       })
     })).then(function (images) {
       images.forEach(function (image, index) {
