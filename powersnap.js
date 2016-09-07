@@ -6,6 +6,7 @@ var chalk = require('chalk')
 var fs = require("fs")
 var crypto = require('crypto');
 var screenshot = require('electron-screenshot-service')
+var path = require('path')
 
 function validateDir(dir) {
   if(!fs.existsSync(dir)) {
@@ -60,6 +61,7 @@ program
       filename = filename.replace("{width}", program.width)
       filename = filename.replace("{height}", program.height)
       filename = filename.replace("{md5}", md5s[index])
+      filename = filename.replace("{basename}", path.basename(url, '.html'))
       return filename
     })
     
