@@ -1,6 +1,6 @@
 {
   "name": "powersnap",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Take reliable screenshots from websites",
   "repository": {
     "type": "git",
@@ -16,9 +16,19 @@
   "author": "Tobias Strebitzer",
   "license": "MIT",
   "dependencies": {
+    "axon": "^2.0.2",
     "bluebird": "^3.4.6",
     "chalk": "^1.1.3",
     "commander": "^2.9.0",
-    "electron-screenshot-service": "^4.0.3"
+    "deep-assign": "^2.0.0",
+    "cross-spawn": "^4.0.0",
+    "electron": "1.3.4"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-import": "^2.0.0"
   }
 }
